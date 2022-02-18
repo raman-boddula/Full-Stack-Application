@@ -21,20 +21,20 @@ router.get("/", async (req, res) => {
     const offset = (page - 1) * size;
     const songs = await Songs.find()
       .populate("album_id")
-      .populate("singer_id")
+      .populate({
+        path: "singer_id",
+        select: {
+          firstname: 1,
+          lastname: 1,
+          gender: 1,
+        },
+      })
       .skip(offset)
       .limit(size)
       .lean()
       .exec();
     const total_pages = Math.ceil((await Songs.find().countDocuments()) / size);
     res.status(200).json({ songs, total_pages });
-
-    //    const songs = await Songs.find()
-    //      .populate("album_id")
-    //      .populate("singer_id")
-    //      .lean()
-    //      .exec();
-    //    res.status(200).json({ songs: songs });
   } catch (err) {
     res.status(500).json({ Status: "failed", error: e.message });
   }
