@@ -3,16 +3,16 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 const artistSchema = new mongoose.Schema({
-    'firstname': { type: 'string', required: true },
-    'lastname': { type: 'string', required: true },
-    'gender': { type: 'string', required: true },
-    'email':{type: 'string', required: true,unique: true},
-    'username': { type: 'string', required: true, unique: true },
-    'password': { type: 'string', required: true },
+    'firstname': { type: String, required: true },
+    'lastname': { type: String, required: true },
+    'gender': { type: String, required: true },
+    'email':{type: String, required: true,unique: true},
+    'username': { type: String, required: true, unique: true },
+    'password': { type: String, required: true },
     'role':{type:String,required:true}
 }, {
     versionKey: false,
-    timestamp: true
+    timestamps: true
 });
 
 
