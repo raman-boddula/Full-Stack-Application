@@ -3,13 +3,16 @@ import React from 'react';
 
 export const Login = () =>
 {   
-    const [userData, setUserData] = React.useState([]);
-    const handleClick = () => {
-        console.log('userdata', userData);
-    }
+    const [userData, setUserData] = React.useState("");
     const handleChange = (e) => {
-        console.log(e.target)
-        console.log(e.target.value)
+        let {id, value} = e.target;
+        id = id === "basic_email" ? "email" : "password";
+        console.log(id,value)
+        setUserData({ ...userData,[id]: value });
+    }
+    const handleClick = (e) => {
+        e.preventDefault();
+        console.log('userdata', userData);
     }
     return(
         <div style={{width:"30%",position:"absolute",top:"20%",left:"35%"}}>
