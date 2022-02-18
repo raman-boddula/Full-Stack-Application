@@ -4,8 +4,10 @@ const app = express();
 
 app.use(express.json()); 
 
-const artistController = require("./controllers/artist.controller");
+const {register,login} = require("./controllers/auth.controller");
 
-app.use("/users/", artistController);
+app.post("/login", login);
+
+app.post('/register', register);
 
 module.exports = app;
