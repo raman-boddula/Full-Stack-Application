@@ -4,6 +4,8 @@ const router = express.Router();
 
 const Songs = require("../models/songs.model");
 
+const authorise = require("../middleware/authorise");
+
 router.post("/", async (req, res) => {
   try {
     const songs = await Songs.create(req.body);
@@ -14,12 +16,25 @@ router.post("/", async (req, res) => {
 });
 router.get("/", async (req, res) => {
   try {
+    const page = +req.query.Page || 1;
+    const size = +req.query.size || 2;
+    const offset = (page - 1) * size;
     const songs = await Songs.find()
       .populate("album_id")
       .populate("singer_id")
+      .skip(offset)
+      .limit(size)
       .lean()
       .exec();
-    res.status(200).json({ songs: songs });
+    const total_pages = Math.ceil((await Songs.find().countDocuments()) / size);
+    res.status(200).json({ songs, total_pages });
+
+    //    const songs = await Songs.find()
+    //      .populate("album_id")
+    //      .populate("singer_id")
+    //      .lean()
+    //      .exec();
+    //    res.status(200).json({ songs: songs });
   } catch (err) {
     res.status(500).json({ Status: "failed", error: e.message });
   }
