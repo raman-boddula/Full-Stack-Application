@@ -73,7 +73,7 @@ export const Navbar = () => {
             <div>    
             <Search placeholder="search your favorite" onChange={handleSearch} style={{ width: 250 ,marginTop:"1.3em",borderRadius:"2em"}} />
         </div>
-            <div></div>
+                <div>{data ? <Link to={'/addSongs'}><Button style={{marginTop:"1.3em"}} type="primary">Add Songs</Button></Link>:null }</div>
             <div></div>
             {data ? <div style={{display:"flex",alignItems:"center",paddingTop:"0.5em",justifyContent: "center"}} > <CgProfile style={{paddingBottom:"0.2em",fontSize:"3.0em"}} /><h1 style={{color:'white',fontFamily:'sans-serif'}}>{data.firstname + " " + data.lastname}</h1></div>: <Link to={"/register"} style={{ textDecoration: "none" }}> <div style={{ padding: "0.6em" }}><CgProfile style={{ fontSize: "3em" }} /></div></Link>}
             {data ? <div><Button type="danger" style={{marginTop:"1.3em"}} onClick={handleLogout}>Logout</Button></div> : null}
@@ -83,6 +83,7 @@ export const Navbar = () => {
                     modified.map((el) => {
                         return (<p>{el.name}</p>)
                     })}</div> : null}
-    </div>
+            </div>
+    
     </div>)
 }

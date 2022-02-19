@@ -6,16 +6,19 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Songs } from "./components/Songs";
 import { Albums } from "./components/Albums";
+import { AddSongs } from "./components/AddSongs";
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<Navbar />}></Route> */}
-        <Route path="/" element={<Albums />}></Route>
+        <Route path="/" element={<Navbar />}></Route>
+        <Route path="/home" element={<Albums />}></Route>
+        {/* <Route path="/home" element={<Albums />}></Route> */}
         <Route path="/home" element={<Navbar />}></Route>
         {/* <Route path="/" element={<Navbar />}></Route> */}
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/addSongs" element={<AddSongs />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/songs/:album" element={<Songs />}></Route>
       </Routes>
