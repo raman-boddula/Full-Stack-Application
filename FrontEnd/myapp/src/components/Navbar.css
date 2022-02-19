@@ -8,8 +8,8 @@
 }
 
 .details {
-    width: 74.3%;
-    margin-left: 12.8%;
+    width: 76.5%;
+    margin-left: 11.8%;
     background-color: #323232;
     color: silver;
     text-align: left;
@@ -21,7 +21,7 @@
 }
 
 .details img {
-    width: 100%
+    width: 90%;
 }
 
 .details h2 {
@@ -45,19 +45,58 @@
     grid-template-columns: repeat(3, 32%);
     padding: 1em;
     grid-gap: 1%;
-    background-color: #C8F2EF
+    background-color: #C8F2EF;
+    min-height: 880px;
 }
 
 .songsDiv {
     width: 70%;
     margin-left: 15%;
-    border: 5px solid red;
+    /* border: 5px solid red; */
+    padding: 1.5em;
+}
+
+.seeall {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+    font-size: 1.5em;
+    font-weight: bolder;
 }
 
 .songs {
     width: 100%;
     background-color: #082032;
     color: #E6E6E6;
+    padding: 1.5em;
+    min-height: 884px;
+}
+
+.seeall>div:hover {
+    color: #9AD0EC;
+    cursor: pointer;
+}
+
+.individualSongs {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    color: white;
+}
+
+.individualSongs h3 {
+    color: white;
+}
+
+.filter {
+    background-color: #C8F2EF;
+    width: 20%;
+}
+
+.main {
+    display: flex;
+    padding: 1.5em;
+    background-color: #C8F2EF;
 }
 
 .lists {
