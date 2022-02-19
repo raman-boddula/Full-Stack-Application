@@ -7,6 +7,59 @@
     color: white;
 }
 
+.details {
+    width: 74.3%;
+    margin-left: 12.8%;
+    background-color: #323232;
+    color: silver;
+    text-align: left;
+    padding: 1em;
+}
+
+.poster {
+    border-radius: 2em;
+}
+
+.details img {
+    width: 100%
+}
+
+.details h2 {
+    color: silver;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.details :hover {
+    font-weight: bolder;
+    color: antiquewhite;
+    cursor: pointer;
+    font-size: 1.55em;
+}
+
+.products {
+    display: grid;
+    width: 80%;
+    /* border: 2px solid red; */
+    grid-template-columns: repeat(3, 32%);
+    padding: 1em;
+    grid-gap: 1%;
+    background-color: #C8F2EF
+}
+
+.songsDiv {
+    width: 70%;
+    margin-left: 15%;
+    border: 5px solid red;
+}
+
+.songs {
+    width: 100%;
+    background-color: #082032;
+    color: #E6E6E6;
+}
+
 .lists {
     color: white;
 }
@@ -20,7 +73,7 @@
 }
 
 body {
-    background-color: gray;
+    background-color: #EFDAD7;
 }
 
 .registerform {

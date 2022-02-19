@@ -8,7 +8,7 @@ const songSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     duration: { type: String, required: true },
-    poster: [{ type: String, required: true }],
+    // poster: [{ type: String, required: true }],
     album_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: album,
