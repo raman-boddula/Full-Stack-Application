@@ -1,22 +1,33 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import React from 'react';
-
+import { Link,useNavigate } from 'react-router-dom';
+import axios from 'axios';
 export const Login = () =>
 {   
     const [userData, setUserData] = React.useState("");
+    const navigate = useNavigate();
     const handleChange = (e) => {
         let {id, value} = e.target;
         id = id === "basic_email" ? "email" : "password";
-        console.log(id,value)
+        // console.log(id,value)
         setUserData({ ...userData,[id]: value });
     }
     const handleClick = (e) => {
         e.preventDefault();
         console.log('userdata', userData);
+        axios.post('http://localhost:2345/login', userData)
+            .then(response => {
+                alert("Verified Successfully!")
+                sessionStorage.setItem('user', JSON.stringify(response.data.user))
+                navigate('/home')
+            })
+            .catch((e) => alert("please provide a valid details"));
+        
     }
     return(
-        <div style={{width:"30%",position:"absolute",top:"20%",left:"35%"}}>
-             <Form
+        <div style={{width:"25%",marginLeft:"37%",marginTop:"5%"}}>
+            <h1>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Login here!</h1> 
+            <Form
             name="basic"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
@@ -48,8 +59,10 @@ export const Login = () =>
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                 <Button onClick={handleClick} type="primary" htmlType="submit">
-                Submit
-                </Button>
+                Login
+                    </Button>
+                    <h3 style={{marginTop:'1em'}}>Create an account ! <Link to={'/register'}><Button>Register</Button></Link></h3>
+                   
             </Form.Item>
            </Form>
 </div>

@@ -14,6 +14,26 @@ router.post("/", async (req, res) => {
 });
 router.get("/", async (req, res) => {
   try {
+    const page = +req.query.Page || 1;
+    const size = +req.query.size || 2;
+    const offset = (page - 1) * size;
+    const album = await Album.find()
+      .populate({
+        path: "artist_id",
+        select: {
+          firstname: 1,
+          lastname: 1,
+          gender: 1,
+          profile_pic: 1,
+        },
+      })
+      .skip(offset)
+      .limit(size)
+      .lean()
+      .exec();
+    const total_pages = Math.ceil((await Album.find().countDocuments()) / size);
+    res.status(200).json({ album, total_pages });
+
     const albums = await Album.find().lean().exec();
     res.status(200).json({ albums: albums });
   } catch (err) {

@@ -7,6 +7,30 @@
     color: white;
 }
 
+.lists {
+    color: white;
+}
+
+.lists :hover {
+    color: skyblue
+}
+
+.ant-input-group .ant-input {
+    border-radius: 2em;
+}
+
 body {
     background-color: gray;
+}
+
+.registerform {
+    width: 25%;
+    margin-left: 37.5%;
+    justify-content: center;
+    padding: 1em;
+    margin-top: 5%;
+}
+
+.registerform input {
+    margin-bottom: 1em;
 }

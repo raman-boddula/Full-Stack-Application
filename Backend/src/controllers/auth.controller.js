@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/artist.model");
 
 const newToken = (user) => {
-  return jwt.sign({ user: user }, 'masai');
+  return jwt.sign({ user: user }, "masai");
 };
 
 const register = async (req, res) => {
@@ -35,6 +35,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   try {
+    console.log(req.body);
     // check if the email address provided already exist
     let user = await User.findOne({ email: req.body.email });
 

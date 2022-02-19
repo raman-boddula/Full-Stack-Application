@@ -2,19 +2,22 @@ const mongoose = require("mongoose");
 
 const bcrypt = require("bcryptjs");
 
-const artistSchema = new mongoose.Schema({
-    'firstname': { type: String, required: true },
-    'lastname': { type: String, required: true },
-    'gender': { type: String, required: true },
-    'email':{type: String, required: true,unique: true},
-    'username': { type: String, required: true, unique: true },
-    'password': { type: String, required: true },
-    'role':{type:String,required:true}
-}, {
+const artistSchema = new mongoose.Schema(
+  {
+    firstname: { type: String, required: true },
+    lastname: { type: String, required: true },
+    gender: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    username: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    profile_pic: { type: String, required: true },
+    role: { type: String, required: true },
+  },
+  {
     versionKey: false,
-    timestamps: true
-});
-
+    timestamps: true,
+  }
+);
 
 artistSchema.pre("save", function (next) {
   if (!this.isModified("password")) return next();
@@ -33,4 +36,4 @@ artistSchema.methods.checkPassword = function (password) {
   });
 };
 
-module.exports = mongoose.model('artist', artistSchema);
+module.exports = mongoose.model("artist", artistSchema);
